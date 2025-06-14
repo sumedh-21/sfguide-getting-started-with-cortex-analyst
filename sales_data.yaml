@@ -157,6 +157,8 @@ relationships:
     relationship_columns:
       - left_column: rep_id
         right_column: rep_id
+      - left_column: snapshot_month
+        right_column: snapshot_quarter
     join_type: left_outer
     relationship_type: many_to_one
 

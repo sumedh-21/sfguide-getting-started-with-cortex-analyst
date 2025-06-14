@@ -15,7 +15,7 @@ from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.exceptions import SnowparkSQLException
 
 AVAILABLE_SEMANTIC_MODELS_PATHS = [
-    "CORTEX_ANALYST_HEALTHCARE/sales_data.yaml"
+    "CORTEX_ANALYST_HEALTHCARE.SALES_DATA.RAW_DATA/sales_data.yaml"
 ]
 API_ENDPOINT = "/api/v2/cortex/analyst/message"
 FEEDBACK_API_ENDPOINT = "/api/v2/cortex/analyst/feedback"
