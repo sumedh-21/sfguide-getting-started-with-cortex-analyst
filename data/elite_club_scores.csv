@@ -1,0 +1,11 @@
+rep_id,rep_name,manager_name,region_id,territory_id,performance_score,goal_attainment_pct,product_focus_score,engagement_score,reach_score,ranking_national,ranking_region,ranking_territory,snapshot_quarter
+REP000,Samuel Stevens,Justin Ibarra,REG4,TERR3,76.15,0.84,0.43,0.88,0.87,1,7,4,2024-03-31
+REP001,Brandon Campbell,Brandy Nichols,REG4,TERR2,75.25,0.89,0.59,0.7,0.21,2,10,4,2024-03-31
+REP002,James Morgan,Jacob Boone,REG3,TERR7,78.62,0.94,0.99,0.55,0.68,3,5,4,2024-03-31
+REP003,Anne Smith,Alicia Baker,REG1,TERR6,72.44,0.83,0.73,0.83,0.49,4,3,2,2024-03-31
+REP004,Nathaniel Baldwin,Wanda Pittman,REG2,TERR2,89.82,1.13,0.76,0.71,0.69,5,6,3,2024-03-31
+REP005,John Alexander,Sabrina Bradley,REG2,TERR9,94.94,1.08,0.86,0.63,0.3,6,5,4,2024-03-31
+REP006,Alyssa Atkins,John Anderson,REG1,TERR8,96.15,0.98,0.68,0.83,0.64,7,10,2,2024-03-31
+REP007,Christopher Martinez,Anthony Fernandez,REG3,TERR3,79.76,1.02,0.93,0.33,0.4,8,7,2,2024-03-31
+REP008,Trevor Pearson,Shawn Parker,REG1,TERR8,72.63,1.19,0.97,0.64,0.85,9,7,4,2024-03-31
+REP009,Melanie Chan,Karen Hicks,REG5,TERR7,93.96,0.89,0.58,0.47,0.25,10,9,3,2024-03-31

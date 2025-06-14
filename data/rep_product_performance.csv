@@ -1,0 +1,16 @@
+rep_id,rep_name,manager_id,manager_name,region_id,territory_id,product_id,product_name,market,call_count,call_goal,call_attainment_pct,speaker_events_hosted,avg_engagement_score,digital_engagements,field_days,product_focus_score,brand_priority,is_core_product,percent_target_hcps_engaged,channel_mix_pct_digital,coverage_type,is_high_priority_territory,snapshot_month
+REP000,Stephen Johnson,MGR1,Preston Mcgee,REG1,TERR2,PROD1,Eliquis,APAC,9,12,0.78,3,0.77,2,19,0.98,High,True,0.48,0.34,Vacant,True,2024-03-31
+REP001,Eric Morales,MGR3,James May,REG2,TERR8,PROD1,Eliquis,APAC,8,19,1.43,3,0.85,10,17,1.0,Medium,True,0.61,0.5,Full,True,2024-03-31
+REP002,Dennis Page,MGR8,Joel Bernard,REG3,TERR6,PROD4,Prevnar,APAC,19,11,0.51,3,0.84,5,19,0.99,Low,True,0.66,0.62,Full,True,2024-03-31
+REP003,James Page,MGR3,Erik Brown,REG2,TERR7,PROD5,Eliquis,US,9,15,1.19,2,0.89,1,9,0.87,High,False,0.9,0.47,Vacant,True,2024-03-31
+REP004,Dean Myers,MGR2,Margaret Butler,REG3,TERR6,PROD2,Prevnar,US,1,16,1.19,0,0.38,0,19,0.23,Medium,True,0.74,0.53,Vacant,True,2024-03-31
+REP005,James Byrd,MGR2,Tracy Contreras,REG3,TERR1,PROD3,Ibrance,APAC,16,19,0.87,3,0.88,4,5,0.6,High,True,0.69,0.53,Full,True,2024-03-31
+REP006,Samantha Adams,MGR10,Thomas Baxter,REG1,TERR6,PROD5,Eliquis,APAC,4,14,1.03,1,0.84,3,8,0.0,Low,False,0.97,0.78,Partial,True,2024-03-31
+REP007,Heather Morrison DVM,MGR1,Dennis Coffey,REG1,TERR10,PROD2,Xeljanz,APAC,1,10,1.5,0,0.88,8,15,0.49,High,False,0.63,0.76,Partial,True,2024-03-31
+REP008,Willie Castro,MGR3,William Hudson,REG1,TERR9,PROD5,Eliquis,US,12,11,0.78,0,0.47,5,15,0.73,Medium,True,0.62,0.4,Partial,True,2024-03-31
+REP009,Aaron Gibbs,MGR1,Andrea Combs MD,REG1,TERR1,PROD4,Xeljanz,APAC,17,15,0.83,1,0.71,3,18,0.26,High,True,0.36,0.48,Vacant,False,2024-03-31
+REP010,Thomas Gomez,MGR8,Morgan Malone,REG3,TERR6,PROD1,Eliquis,EMEA,19,16,0.55,2,0.64,8,15,0.58,High,False,0.82,0.5,Partial,True,2024-03-31
+REP011,Joshua Stephens,MGR9,Michelle Morris,REG2,TERR7,PROD5,Ibrance,APAC,18,19,0.85,0,0.68,1,9,0.46,Medium,False,0.81,0.55,Partial,False,2024-03-31
+REP012,Gerald Blanchard,MGR4,Rhonda Robinson,REG1,TERR10,PROD1,Eliquis,EMEA,5,12,1.04,0,0.37,7,14,0.35,High,True,0.31,0.39,Partial,False,2024-03-31
+REP013,Gina Russell,MGR8,Jessica Bass,REG3,TERR4,PROD3,Ibrance,EMEA,19,10,0.64,2,0.86,9,6,0.41,Medium,True,0.49,0.56,Full,True,2024-03-31
+REP014,Makayla Vega,MGR10,Kristina Adams,REG2,TERR3,PROD5,Eliquis,US,7,19,1.25,2,0.54,0,20,0.01,Low,False,0.91,0.57,Partial,True,2024-03-31
