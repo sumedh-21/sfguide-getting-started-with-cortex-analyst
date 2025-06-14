@@ -164,13 +164,15 @@ relationships:
 
 verified_queries:
   - name: "Top HCPs by TRx"
-    question: "Who were the top HCPs by total TRx last month?"
+    question: "Who were the top HCPs by total TRx in the latest available month?"
     verified_at: 1749935489
     verified_by: apurv
     sql: |
       SELECT hcp_name, SUM(trx) AS total_trx
       FROM hcp_analytics
-      WHERE snapshot_date BETWEEN '2024-05-01' AND '2024-05-31'
+      WHERE snapshot_date = (
+        SELECT MAX(snapshot_date) FROM hcp_analytics
+      )
       GROUP BY hcp_name
       ORDER BY total_trx DESC
       LIMIT 10
