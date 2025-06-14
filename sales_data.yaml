@@ -1,0 +1,174 @@
+name: PharmaSalesAnalytics
+tables:
+  - name: hcp_analytics
+    base_table:
+      database: cortex_analyst_healthcare
+      schema: sales_data
+      table: hcp_analytics_summary
+    primary_key:
+      columns: [hcp_id, product_id, snapshot_date]
+    time_dimensions:
+      - name: snapshot_date
+        expr: snapshot_date
+        data_type: date
+        description: Monthly snapshot
+    measures:
+      - name: trx
+        expr: trx
+        description: Total TRx prescribed by the HCP
+        default_aggregation: sum
+        data_type: number
+      - name: nrx
+        expr: nrx
+        description: New TRx prescribed
+        default_aggregation: sum
+        data_type: number
+      - name: nbrx
+        expr: nbrx
+        description: New-to-brand TRx
+        default_aggregation: sum
+        data_type: number
+      - name: total_sales_usd
+        expr: total_sales_usd
+        description: Total sales attributed to the HCP
+        default_aggregation: sum
+        data_type: number
+      - name: trx_vs_market_pct
+        expr: trx_vs_market_pct
+        description: Percentage difference from market average
+        data_type: number
+        default_aggregation: avg
+      - name: engagement_score
+        expr: engagement_score
+        description: Weighted score of rep engagements
+        data_type: number
+        default_aggregation: avg
+    dimensions:
+      - name: hcp_id
+        expr: hcp_id
+        data_type: string
+      - name: hcp_name
+        expr: hcp_name
+        data_type: string
+        cortex_search_service_name: hcp_search_service
+      - name: specialty
+        expr: specialty
+        data_type: string
+        cortex_search_service_name: hcp_search_service
+      - name: market
+        expr: market
+        data_type: string
+      - name: preferred_channel
+        expr: preferred_channel
+        data_type: string
+      - name: coverage_status
+        expr: coverage_status
+        data_type: string
+      - name: is_targeted
+        expr: is_targeted
+        data_type: boolean
+      - name: is_engaged
+        expr: is_engaged
+        data_type: boolean
+
+  - name: rep_performance
+    base_table:
+      database: cortex_analyst_healthcare
+      schema: sales_data
+      table: rep_product_performance
+    primary_key:
+      columns: [rep_id, product_id, snapshot_month]
+    time_dimensions:
+      - name: snapshot_month
+        expr: snapshot_month
+        data_type: date
+    measures:
+      - name: call_attainment_pct
+        expr: call_attainment_pct
+        description: Percentage of call goal achieved
+        default_aggregation: avg
+        data_type: number
+      - name: avg_engagement_score
+        expr: avg_engagement_score
+        description: Average engagement score across HCPs
+        data_type: number
+        default_aggregation: avg
+      - name: field_days
+        expr: field_days
+        description: Number of active field days
+        data_type: number
+        default_aggregation: sum
+    dimensions:
+      - name: rep_id
+        expr: rep_id
+        data_type: string
+      - name: rep_name
+        expr: rep_name
+        data_type: string
+        cortex_search_service_name: rep_search_service
+      - name: manager_name
+        expr: manager_name
+        data_type: string
+      - name: product_name
+        expr: product_name
+        data_type: string
+      - name: brand_priority
+        expr: brand_priority
+        data_type: string
+
+  - name: elite_scores
+    base_table:
+      database: cortex_analyst_healthcare
+      schema: sales_data
+      table: elite_club_scores
+    primary_key:
+      columns: [rep_id, snapshot_quarter]
+    time_dimensions:
+      - name: snapshot_quarter
+        expr: snapshot_quarter
+        data_type: date
+    measures:
+      - name: performance_score
+        expr: performance_score
+        description: Composite performance score
+        default_aggregation: avg
+        data_type: number
+      - name: goal_attainment_pct
+        expr: goal_attainment_pct
+        description: Goal attainment percentage
+        data_type: number
+        default_aggregation: avg
+    dimensions:
+      - name: rep_id
+        expr: rep_id
+        data_type: string
+      - name: rep_name
+        expr: rep_name
+        data_type: string
+        cortex_search_service_name: elite_club_search_service
+      - name: region_id
+        expr: region_id
+        data_type: string
+
+relationships:
+  - name: rep_perf_to_elite
+    left_table: rep_performance
+    right_table: elite_scores
+    relationship_columns:
+      - left_column: rep_id
+        right_column: rep_id
+    join_type: left_outer
+    relationship_type: many_to_one
+
+verified_queries:
+  - name: "Top HCPs by TRx"
+    question: "Who were the top HCPs by total TRx last month?"
+    verified_at: 1749935489
+    verified_by: apurv
+    sql: |
+      SELECT hcp_name, SUM(trx) AS total_trx
+      FROM hcp_analytics
+      WHERE snapshot_date BETWEEN '2024-05-01' AND '2024-05-31'
+      GROUP BY hcp_name
+      ORDER BY total_trx DESC
+      LIMIT 10
