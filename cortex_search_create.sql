@@ -1,33 +1,14 @@
 -- Step 1: Set the correct context
-USE DATABASE cortex_analyst_healthcare;
-USE SCHEMA sales_data;
+USE DATABASE pharma_analyst;
+USE SCHEMA prescription_timeseries;
 
--- Step 2: Create hcp_search_service
-CREATE OR REPLACE CORTEX SEARCH SERVICE hcp_search_service
-ON HCP_ANALYTICS_SUMMARY
+-- Step 2: Create the prescription_facility_search_service
+CREATE OR REPLACE CORTEX SEARCH SERVICE prescription_facility_search_service
+ON HEALTHCARE_FACILITY
 WAREHOUSE = cortex_analyst_wh
 TARGET_LAG = '1 hour'
 AS (
-    SELECT DISTINCT hcp_name, specialty
-    FROM HCP_ANALYTICS_SUMMARY
+    SELECT DISTINCT HEALTHCARE_FACILITY
+    FROM PRESCRIPTION
 );
 
--- Step 3: Create rep_search_service
-CREATE OR REPLACE CORTEX SEARCH SERVICE rep_search_service
-ON REP_PRODUCT_PERFORMANCE
-WAREHOUSE = cortex_analyst_wh
-TARGET_LAG = '1 hour'
-AS (
-    SELECT DISTINCT rep_name
-    FROM REP_PRODUCT_PERFORMANCE
-);
-
--- Step 4: Create elite_club_search_service
-CREATE OR REPLACE CORTEX SEARCH SERVICE elite_club_search_service
-ON ELITE_CLUB_SCORES
-WAREHOUSE = cortex_analyst_wh
-TARGET_LAG = '1 hour'
-AS (
-    SELECT DISTINCT rep_name
-    FROM ELITE_CLUB_SCORES
-);

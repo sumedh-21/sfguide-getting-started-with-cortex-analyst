@@ -1,0 +1,99 @@
+name: PharmaPrescription
+tables:
+  - name: prescription
+    description: Prescription sales data across regions, facilities, and product classes.
+    base_table:
+      database: pharma_analyst
+      schema: prescription_timeseries
+      table: prescription
+    primary_key:
+      columns:
+        - PHARMACY
+        - HEALTHCARE_FACILITY
+        - CITY
+        - PRODUCT_NAME
+    time_dimensions:
+      - name: month
+        expr: MONTH
+        description: Month of prescription (e.g. January)
+        data_type: varchar
+      - name: year
+        expr: YEAR
+        description: Year of prescription
+        data_type: number
+    measures:
+      - name: total_sales
+        expr: SALES
+        description: Total sales value
+        synonyms: ["revenue", "turnover"]
+        default_aggregation: sum
+        data_type: number
+      - name: total_quantity
+        expr: QUANTITY
+        description: Total quantity sold
+        synonyms: ["volume", "units sold"]
+        default_aggregation: sum
+        data_type: number
+      - name: total_trx
+        expr: TRX
+        description: Total number of prescriptions filled
+        synonyms: ["prescriptions", "transactions"]
+        default_aggregation: sum
+        data_type: number
+      - name: total_nrx
+        expr: NRX
+        description: Total new prescriptions
+        synonyms: ["new prescriptions"]
+        default_aggregation: sum
+        data_type: number
+    dimensions:
+      - name: pharmacy
+        expr: PHARMACY
+        data_type: varchar
+      - name: healthcare_facility
+        expr: HEALTHCARE_FACILITY
+        data_type: varchar
+        cortex_search_service_name: prescription_facility_search_service
+        sample_values:
+          - MediCare Center
+          - HealthFirst Clinic
+          - GlobalCare Hospital
+      - name: city
+        expr: CITY
+        data_type: varchar
+        sample_values: ["Lublin", "Warsaw", "Krakow"]
+      - name: country
+        expr: COUNTRY
+        data_type: varchar
+        sample_values: ["Poland"]
+      - name: product_name
+        expr: PRODUCT_NAME
+        data_type: varchar
+        sample_values: ["Acantaine", "Choriotrisin", "Fluzapril"]
+      - name: product_class
+        expr: PRODUCT_CLASS
+        data_type: varchar
+        sample_values: ["Antibiotics", "Antivirals", "Analgesics"]
+      - name: channel
+        expr: CHANNEL
+        data_type: varchar
+        sample_values: ["Pharmacy", "Hospital"]
+      - name: sub_channel
+        expr: SUB_CHANNEL
+        data_type: varchar
+        sample_values: ["Private", "Institution", "Retail"]
+      - name: price
+        expr: PRICE
+        data_type: number
+      - name: sales_rep
+        expr: SALES_REP
+        data_type: varchar
+      - name: manager
+        expr: MANAGER
+        data_type: varchar
+      - name: latitude
+        expr: LATITUDE
+        data_type: float
+      - name: longitude
+        expr: LONGITUDE
+        data_type: float
