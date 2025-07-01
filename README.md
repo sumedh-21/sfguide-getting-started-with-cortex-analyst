@@ -13,6 +13,7 @@ This repo sets up an AI-driven analytics workflow on structured data using **Sno
 ## 📊 Use Case
 
 Ideal for business teams analyzing structured data (e.g., prescriptions, sales, transactions) with natural language — no SQL required.
+![image](https://github.com/user-attachments/assets/045991b7-2d69-42dd-9b61-3fbef9ea61e2)
 
 ---
 
